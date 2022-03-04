@@ -21,11 +21,12 @@ module "serverTemplate" {
   subnetToPlaceEC2Instance             = var.subnetToPlaceEC2Instance
   securityGroupToAttachToEC2Instance   = var.securityGroupToAttachToEC2Instance
   bootstrapFileToLaunchWithEC2Instance = var.bootstrapFileToLaunchWithEC2Instance
-  ami                                  = var.ami
-  instance_type                        = var.instance_type
-  key_name                             = var.key_name
-  server_name                          = var.server_name
-  user_data                            = data.template_file.bootstrapFileToLaunchWithEC2Instance.template
+  ami                                  = data.aws_ami.getGoldenImageAMI.id
+  #var.ami
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  server_name   = var.server_name
+  user_data     = data.template_file.bootstrapFileToLaunchWithEC2Instance.template
 }
 
 # Calling security rule module to create ingress  

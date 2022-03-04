@@ -10,3 +10,21 @@ data "aws_security_group" "getSecurityGroupToAttachToECEInstance" {
 data "template_file" "bootstrapFileToLaunchWithEC2Instance" {
   template = file("${path.module}/${"httpd_bootstrap"}.txt")
 }
+
+# Data source to get AMI
+data "aws_ami" "getGoldenImageAMI" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["golden_Ami_Image_2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["self"]
+}
+
