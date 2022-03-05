@@ -15,7 +15,3 @@ sudo cp /tmp/tf-packer.pub /home/jenkins/.ssh/authorized_keys
 sudo chmod 600 /home/jenkins/.ssh/authorized_keys
 sudo chown -R jenkins:jenkins /home/jenkins/.ssh
 sudo usermod --shell /bin/bash jenkins
-
-
-
-#=====================================================#
