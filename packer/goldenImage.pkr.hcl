@@ -1,4 +1,4 @@
-packer {
+/*packer {
   required_plugins {
     sshkey = {
       version = ">= 0.1.0"
@@ -9,7 +9,7 @@ packer {
 }
 
 data "sshkey" "install" {
-}
+}*/
 
 variable "aws_access_key" {
   type = string
@@ -29,7 +29,7 @@ source "amazon-ebs" "basic-example" {
   source_ami    = "ami-033b95fb8079dc481"
   instance_type = "t2.micro"
   ssh_username  = "ec2-user"
-  ami_name      = "golden_Ami_Image_2"
+  ami_name      = "golden_Ami_Image"
 }
 
 build {
@@ -37,7 +37,7 @@ build {
     "source.amazon-ebs.basic-example"
   ]
 
-    provisioner "file" {
+  provisioner "file" {
     destination = "/tmp/"
     source      = "tf-packer"
   }
