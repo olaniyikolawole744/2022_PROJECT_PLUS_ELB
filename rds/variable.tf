@@ -23,4 +23,10 @@ variable "sg_tag_name" {}
 variable "securityGroupIdToAddRuleTo" {}
 variable "securityRuleFromPort" {}
 variable "securityRuleToPort" {}
-variable "securityGroupRuleCidrBlock" {}
+#variable "securityGroupRuleCidrBlock" {}
+
+
+
+#variable "tomcatSecurityGroupName" {}
+variable "inboundTrafficSourceSecurityGroupId" {}
+

@@ -1,8 +1,16 @@
-#Data source to fetch instance security group
-data "aws_security_group" "getSecurityGroupToAttachToECEInstance" {
+#Data source to fetch httpd security group id
+data "aws_security_group" "getHttpdSecurityGroupName" {
   filter {
     name   = "tag:Name"
-    values = [var.securityGroupToAttachToEC2Instance]
+    values = [var.httpdSecurityGroupName]
+  }
+}
+
+#Data source to fetch elb security group for inbound traffic
+data "aws_security_group" "getElbSecurityGroupName" {
+  filter {
+    name   = "tag:Name"
+    values = [var.elbSecurityGroupName]
   }
 }
 
@@ -17,7 +25,7 @@ data "aws_ami" "getGoldenImageAMI" {
 
   filter {
     name   = "name"
-    values = ["golden_Ami_Image_2"]
+    values = ["golden_Ami_Image"]
   }
 
   filter {
@@ -27,4 +35,3 @@ data "aws_ami" "getGoldenImageAMI" {
 
   owners = ["self"]
 }
-

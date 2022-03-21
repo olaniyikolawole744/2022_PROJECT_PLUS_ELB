@@ -68,7 +68,7 @@ resource "aws_route_table_association" "associateSubnetWithRouteTable" {
 
 # Create security group
 module "createSecurityGroup" {
-  count               = 3
+  count               = 4
   source              = "../security_group_module"
   sg_name             = var.sg_name[count.index]
   sg_description_main = var.sg_description_main[count.index]

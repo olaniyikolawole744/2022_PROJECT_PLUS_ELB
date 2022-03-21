@@ -2,4 +2,5 @@
   variable securityGroupIdToAddRuleTo {}
   variable securityRuleFromPort {}
   variable securityRuleToPort {}
-  variable securityGroupRuleCidrBlock {}
+  #variable securityGroupRuleCidrBlock {}
+  variable inboundTrafficSourceSecurityGroupId {}

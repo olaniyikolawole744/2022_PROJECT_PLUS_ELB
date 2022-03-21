@@ -1,22 +1,11 @@
-/*packer {
-  required_plugins {
-    sshkey = {
-      version = ">= 0.1.0"
-      #source = "/c/Users/14809/Desktop/my_keys/.ssh" 
-      source = "github.com/ivoronin/sshkey"
-    }
-  }
-}
-
-data "sshkey" "install" {
-}*/
+// export PKR_VAR_aws_secret_key=$YOURSECRETKEY
 
 variable "aws_access_key" {
   type = string
   #secret = true
 }
 
-// export PKR_VAR_aws_secret_key=$YOURSECRETKEY
+
 variable "aws_secret_key" {
   type = string
   #secret = true
@@ -47,10 +36,12 @@ build {
     source      = "tf-packer.pub"
   }
 
+  provisioner "file" {
+    source      = "index.html"
+    destination = "/tmp/index.html"
+  }
+
   provisioner "shell" {
     script = "launchFile.txt"
   }
-
-
-
 }

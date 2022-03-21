@@ -6,21 +6,14 @@ data "aws_subnet" "get_subnet_ids_from_vpc_for_subnet_group_aza" {
   }
 }
 
-#Data to fetch subnet in availability zone c for subnet group 
-data "aws_subnet" "get_subnet_ids_from_vpc_for_subnet_group_azc" {
+#Data to fetch subnet in availability zone b for subnet group 
+data "aws_subnet" "get_subnet_ids_from_vpc_for_subnet_group_azb" {
   filter {
     name   = "tag:Name"
-    values = ["web_tier_subnet_zone_c"]
+    values = ["db_tier_subnet_zone_b"]
   }
 }
 
-# get aza app tier subnet cidr block for use in db security group
-data "aws_subnet" "get_app_tier_subnet_cidr_block_for_db_security_group" {
-  filter {
-    name   = "tag:Name"
-    values = ["app_tier_subnet_zone_a"]
-  }
-}
 
 
 # Data source block to fetch vpc id
@@ -36,5 +29,17 @@ data "aws_security_group" "get_db_sg" {
   filter {
     name   = "tag:Name"
     values = ["tb_vpc_db_sg"]
+  }
+}
+
+
+
+
+#====================================================================
+#Data source to fetch httpd security group for inbound source traffic
+data "aws_security_group" "getTomcatSecurityGroup" {
+  filter {
+    name   = "tag:Name"
+    values = ["tb_vpc_tomcat_sg"]
   }
 }

@@ -2,9 +2,9 @@
 resource "aws_security_group_rule" "securityRuleTemplate" {
   description       = "Add additional Inbound Rule to Security Group"
   type              = "ingress"
-  security_group_id = var.securityGroupIdToAddRuleTo
-  from_port         = var.securityRuleFromPort
-  to_port           = var.securityRuleToPort
+  security_group_id = var.elbSecurityGroupIdToAddRuleTo
+  from_port         = var.elbSecurityRuleFromPort
+  to_port           = var.elbSecurityRuleToPort
   protocol          = "tcp"
-  source_security_group_id = var.inboundTrafficSourceSecurityGroupId
+  cidr_blocks       = [var.elbSecurityGroupRuleCidrBlock]
 }

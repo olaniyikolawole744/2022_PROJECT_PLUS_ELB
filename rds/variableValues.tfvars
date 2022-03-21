@@ -23,4 +23,7 @@ sg_tag_name         = "tbVpcRdsDb_SG"
 securityGroupIdToAddRuleTo = ""
 securityRuleFromPort       = ["3306"]
 securityRuleToPort         = ["3306"]
-securityGroupRuleCidrBlock = "10.0.32.0/24" 
+
+inboundTrafficSourceSecurityGroupId = ""
+
+

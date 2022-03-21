@@ -1,21 +1,26 @@
 #!/bin/bash
 
-#CREATE HTTPD SERVERS
+#DESTROY DB INSTANCE
+cd rds
+terraform destroy "-var-file=variableValues.tfvars" --auto-approve
+
+#DESTROY HTTPD SERVERS
+cd ../
 cd servers
 cd httpd_server
 terraform destroy "-var-file=variableValues.tfvars" --auto-approve
 
-#CREATE PYTHON SERVERS
-cd ..
-cd python_server
+#DESTROY TOMCAT
+cd ../
+cd tomcat_server
 terraform destroy "-var-file=variableValues.tfvars" --auto-approve
 
-#CREATE RDS DB
+#DESTROY ELB 
 cd ../../
-cd rds
+cd elb
 terraform destroy "-var-file=variableValues.tfvars" --auto-approve
 
-#CREATE VPC
+#DESTROY VPC
 cd ..
 cd vpc
 terraform destroy "-var-file=variableValues.tfvars" --auto-approve

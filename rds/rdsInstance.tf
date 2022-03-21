@@ -40,5 +40,6 @@ module "createSecurityGroupRule" {
   securityGroupIdToAddRuleTo = data.aws_security_group.get_db_sg.id
   securityRuleFromPort       = var.securityRuleFromPort[count.index]
   securityRuleToPort         = var.securityRuleToPort[count.index]
-  securityGroupRuleCidrBlock = data.aws_subnet.get_app_tier_subnet_cidr_block_for_db_security_group.cidr_block
+  #securityGroupRuleCidrBlock = data.aws_subnet.get_app_tier_subnet_cidr_block_for_db_security_group.cidr_block
+  inboundTrafficSourceSecurityGroupId = data.aws_security_group.getTomcatSecurityGroup.id
 }
